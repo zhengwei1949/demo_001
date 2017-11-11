@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <title>我的订单</title>
+    <link rel="stylesheet" href="../css/base.css"/>
+    <link rel="stylesheet" href="css/myIndent.css"/>
+    <script src="../js/remShiPei.js"></script>
+</head>
+<body>
+<div class="top">
+    <a href="../index.html"> < </a>
+    我的订单
+    <a href="javascript:;"></a>
+</div>
+<div class="point">
+    <div class="point-one">
+        全部
+    </div>
+    <div class="point-two">
+        待付款
+    </div>
+    <div class="point-three">
+        待发货
+    </div>
+    <div class="point-four">
+        待收货
+    </div>
+    <div class="point-five">
+        待评价
+    </div>
+    <i></i>
+</div>
+<div class="allBox">
+    <ul>
+        <li>
+            <p>小吃货,你的零食告急了</p>
+            <a href="javascript:;">首页逛逛</a>
+        </li>
+        <li>
+            <p>小吃货,你的零食告急了</p>
+            <a href="javascript:;">首页逛逛</a>
+        </li>
+        <li>
+            <p>小吃货,你的零食告急了</p>
+            <a href="javascript:;">首页逛逛</a>
+        </li>
+        <li>
+            <p>小吃货,你的零食告急了</p>
+            <a href="javascript:;">首页逛逛</a>
+        </li>
+        <li>
+            <p>小吃货,你的零食告急了</p>
+            <a href="javascript:;">首页逛逛</a>
+        </li>
+        <li>
+            <p>小吃货,你的零食告急了</p>
+            <a href="javascript:;">首页逛逛</a>
+        </li>
+
+    </ul>
+
+
+</div>
+
+
+
+<script>
+    qiehuan();
+    function qiehuan(){
+        //获取上部分大页面
+        var sectionBox = document.querySelector(".allBox").querySelector("ul");
+        var secLis = sectionBox.querySelectorAll("li");
+        //获取下面四个小导航
+        var point = document.querySelector(".point");
+        var III =point.querySelectorAll("i")[0];
+        var pointLis = point.querySelectorAll("div");
+        var count = 0;
+        for (var i=0;i<pointLis.length;i++){
+            pointLis[i].index = i;
+            pointLis[i].addEventListener("touchend", function (e) {
+                count = this.index;
+                sectionBox.style.left = -count * 100 + "%";
+                III.style.left = count * 20 + "%";
+            });
+        }
+        var startX,moveX,distanceX;
+        sectionBox.addEventListener("touchstart",function(e){
+            //获取当前手指的起始位置
+            startX= e.targetTouches[0].clientX;
+        });
+        //为图片添加触摸事件--滑动过程
+        sectionBox.addEventListener("touchmove",function(e){
+            //记录手指在滑动过程中的位置
+            moveX= e.targetTouches[0].clientX;
+            //计算坐标的差异
+            distanceX=moveX-startX;
+        });
+        sectionBox.addEventListener("touchend",function(e){
+            //获取当前滑动的距离，判断距离是否超出指定的范围 100px
+            if(Math.abs(distanceX) > 100){
+                //根据正负值判断方向
+                if(distanceX < 0){
+                    if(count  == 4  ) {
+                        return;
+                    }
+                    count++;
+                    sectionBox.style.left = -count * 100 + "%";
+                    III.style.left = count * 20 + "%";
+                }
+                if(distanceX > 0){
+                    if(count  == 0 ) {
+                        return;
+                    }
+                    count--;
+                    sectionBox.style.left = -count * 100 + "%";
+                    III.style.left = count * 20 + "%";
+                }
+            }
+            //清除上一次move所产生的数据
+            startX=0;
+            moveX=0;
+            distanceX=0;
+        });
+    }
+</script>
+
+
+</body>
+</html>

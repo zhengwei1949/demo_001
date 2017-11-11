@@ -1,0 +1,62 @@
+html,
+body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  font-family: "微软雅黑", sans-serif;
+  padding: 0;
+  margin: 0;
+  background: #ededed;
+}
+.top {
+  height: .6rem;
+  width: 100%;
+  min-width: 320px;
+  max-width: 768px;
+  position: relative;
+  text-align: center;
+  line-height: .6rem;
+  top: 0;
+  left: 0;
+  font-size: .3rem;
+  background: #ffffff;
+}
+.top > a {
+  position: absolute;
+  width: .6rem;
+  height: .6rem;
+  left: 0;
+  font-size: .5rem;
+  line-height: .5rem;
+  top: 0;
+}
+.top > a:last-of-type {
+  background: url("../images/lxKeFu.png") no-repeat center center;
+  background-size: .4rem .4rem;
+  left: 100%;
+  margin-left: -0.6rem;
+}
+.center {
+  width: 100%;
+  height: auto;
+  background: url("../images/backIndent.png") no-repeat;
+  background-size: 100%;
+  background-position: center 1rem;
+  font-size: .3rem;
+  text-align: center;
+  padding-top: 3rem;
+}
+.center > p {
+  width: 3rem;
+  margin: 1rem auto;
+  color: #666666;
+}
+.center a {
+  height: .6rem;
+  background: #FF4F39;
+  line-height: .6rem;
+  border-radius: .3rem;
+  width: 2rem;
+  margin: 0 auto;
+  color: #ffffff;
+}
